@@ -5,3 +5,12 @@ export default (validators) => async (req, res, next) => {
 		return res;
 	});
 
+	const errorResults = results.forEach(result => {
+		if (result) {
+			validationErrors.push({ message: result.message, field: result.field });
+		}
+	})
+
+
+	next()
+}
