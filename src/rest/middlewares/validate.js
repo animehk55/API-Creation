@@ -11,6 +11,9 @@ export default (validators) => async (req, res, next) => {
 		}
 	})
 
+	if (validationErrors.length) {
+        return res.status(400).send({message: 'Validation failed', reasons: validationErrors})
+	}
 
 	next()
 }
